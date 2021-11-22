@@ -32,4 +32,5 @@ def close_connection(exception):
 @app.route('/')
 @app.route('/jobs')
 def jobs():
+    jobs = execute_sql()
     return render_template('index.html')
