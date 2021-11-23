@@ -1,4 +1,5 @@
 import sqlite3
+from types import MethodDescriptorType
 from flask import Flask, render_template, g
 
 PATH = 'db/jobs.sqlite'
@@ -46,3 +47,6 @@ def employer(employer_id):
     jobs = execute_sql('SELECT job.id, job.title, job.description, job.salary FROM job JOIN employer ON employer.id = job.employer_id WHERE employer.id = ?', [employer_id])
     reviews = execute_sql('SELECT review, rating, title, date, status FROM review JOIN employer ON employer.id = review.employer_id WHERE employer.id = ?', [employer_id])
     return render_template('employer.html', employer=employer, jobs=jobs, reviews=reviews)
+
+# def review(employer):
+#     'GET', 'POST' =
